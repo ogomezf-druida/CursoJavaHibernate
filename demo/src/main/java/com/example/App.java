@@ -36,6 +36,7 @@ public class App {
 
     public static void main(String[] args) {
         addPizza();
+        addIngredient();
 
         CustomerRepository repositoy = new CustomerRepository();
         ServiceCustomerUpdate service = new ServiceCustomerUpdate(repositoy);
@@ -54,6 +55,21 @@ public class App {
        Writer.printAvVoladora(aguila,System.out::println);
     }
     public static void addPizza(){
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(Ingredient.create(UUID.randomUUID(), "tomate", 1D));
+        ingredients.add(Ingredient.create(UUID.randomUUID(), "queso", 1.5D));
+
+        Request req = new Request(
+            "carbonara", 
+            "pizza buenisima", 
+            "url", 
+            ingredients);
+
+        var response = AddPizza.build().add(req);
+        System.out.println(response);
+    }
+
+    public static void addIngredient(){
         List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(Ingredient.create(UUID.randomUUID(), "tomate", 1D));
         ingredients.add(Ingredient.create(UUID.randomUUID(), "queso", 1.5D));

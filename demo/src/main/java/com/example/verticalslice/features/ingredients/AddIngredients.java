@@ -8,15 +8,13 @@ import com.example.segregation.Add;
 
 public class AddIngredients {
     // Request->Input
-    public record Request(
-            String name,
-            Double price)
+    public record Request(String name,Double price) {
+
+    }
 
     // Response->Output
-    public record Response(
-            UUID id,
-            String name,
-            Double price)
+    public record Response(UUID id, String name, Double price) {
+
     }
 
     private final UseCase useCase;
@@ -50,12 +48,10 @@ public class AddIngredients {
 
             //Request->Entidad
             
-            var pizza = Ingredient.create(
-                    req.name(),req.price());
-
-            for (var ingr : req.ingredients()) {
-                Ingredient.addIngredient(ingr);
-            }
+            var ingredient = Ingredient.create(
+                UUID.randomUUID(),
+                req.name(),
+                req.price());
             //persistencia
             repository.add(Ingredient);
             //Entidad->Response
@@ -73,7 +69,7 @@ public class AddIngredients {
 
         @Override
         public void add(Ingredient entity) {
-            // persistir la pizza
+            // persistir el ingrediente
         }
 
     }
