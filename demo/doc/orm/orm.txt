@@ -1,0 +1,10 @@
+Orm (Objet relational mapping)
+
+Pizza->Atributos+List<ingredients>
+
+BBDD
+Pizza   Pizza+Ingredient   Ingredient
+1       1    1             1
+        1    2             2
+
+
